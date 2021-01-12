@@ -5,11 +5,13 @@
 
   --dark-font-color: #000;
 
-  --element-padding: 50px 25px;
+  --element-padding: 50px 0;
+  --sidebar-side-padding: 0 30px;
 }
 
 .main {
   display: flex;
+  height: 100vh;
 }
 
 .sidebar {

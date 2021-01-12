@@ -1,6 +1,7 @@
 import React from "react";
 import {NoteType } from "../../redux/notes/types";
-import NoteItem from "./NoteItem";
+import s from "./noteList.module.css";
+import NoteItem from "./noteItem/NoteItem";
 
 type NotesListType = {
   createNote: void
@@ -12,8 +13,11 @@ const NotesList = (props: NotesListType) => {
   return (
     <div>
       {props.notes.map((note: NoteType) => {
-        return <NoteItem {...note}/>
+        return <NoteItem key={note.id} {...note}/>
       })}
+      <hr/>
+
+      <button className={s.newTaskButton}>Create new task</button>
     </div>
   )
 }

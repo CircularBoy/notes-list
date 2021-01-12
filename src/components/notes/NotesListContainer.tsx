@@ -16,7 +16,6 @@ const NotesListContainer = (props: any) => {
   return <NotesList {...props}/>
 }
 
-
 const mapStateToProps = (state: any) => {
   return {
     notes: state.notes.notes
