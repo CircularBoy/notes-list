@@ -1,0 +1,13 @@
+.button {
+  display: inline-block;
+  padding: 12px 10px;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.primary {
+  color: #fff;
+  background-color: #2196f3;
+}
+

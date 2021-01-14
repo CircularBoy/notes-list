@@ -7,7 +7,7 @@ import {
   CreateNote,
   EditNote,
   DeleteNote,
-  NoteType
+  NoteType, NoteWithoutIdType
 } from "./types";
 
 const initialState: NotesType = {
@@ -34,19 +34,29 @@ const initialState: NotesType = {
 function notesReducer(state: NotesType = initialState, action: ActionTypes): NotesType {
   switch (action.type) {
     case CREATENOTE:
+      const lastId = state.notes[state.notes.length-1].id
+      let newNote: NoteType = {
+        ...action.newNote,
+        id: lastId + 1,
+      }
       return {
-        notes: [...state.notes, action.newNote]
+        notes: [...state.notes, newNote]
       }
     case EDITNOTE:
       return {
         notes: state.notes.map(note => {
+          console.log(typeof note.id)
+          console.log(typeof action.id)
           if (note.id === action.id) {
-            return {...action.editNote}
+            console.log('common')
+            console.log({...note, ...action.editNote})
+            return {...note, ...action.editNote}
           }
           return {...note}
         })
       }
     case DELETENOTE:
+      console.log('del')
       return {
         notes: state.notes.filter(note => note.id !== action.id)
       }
@@ -55,8 +65,8 @@ function notesReducer(state: NotesType = initialState, action: ActionTypes): Not
   }
 }
 
-export const createNote = (newNote: NoteType): CreateNote => ({type: CREATENOTE, newNote})
-export const editNote = (id: number, editNote: NoteType): EditNote => ({type: EDITNOTE, editNote, id})
+export const createNote = (newNote: NoteWithoutIdType): CreateNote => ({type: CREATENOTE, newNote})
+export const editNote = (id: number, editNote: NoteWithoutIdType): EditNote => ({type: EDITNOTE, editNote, id})
 export const deleteNote = (id: number): DeleteNote => ({type: DELETENOTE, id})
 
 export default notesReducer;

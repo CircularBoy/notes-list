@@ -1,3 +1,5 @@
 .newTaskButton {
+  display: inline-block;
   margin: var(--sidebar-side-padding);
+  margin-top: 10px;
 }

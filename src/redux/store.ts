@@ -1,15 +1,17 @@
 import {applyMiddleware, combineReducers, compose, createStore} from "redux";
-import {reducer as formReducer} from "redux-form";
 import thunk from "redux-thunk";
 import notesReducer from "./notes/notes-reducer";
 
 let reducers = combineReducers({
-    notes: notesReducer,
-    form: formReducer
-
+  notes: notesReducer
 })
+
+type RootReducerType = typeof reducers
+export type AppStateType = ReturnType<RootReducerType>
+
+// @ts-ignore
 const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
-let store = createStore(reducers, compose(applyMiddleware(thunk), reduxDevTools) )
+let store = createStore(reducers, compose(applyMiddleware(thunk), reduxDevTools))
 
 export default store;

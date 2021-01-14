@@ -1,0 +1,79 @@
+.linkWrap {
+  position: relative;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  padding: var(--sidebar-side-padding);
+  background-color: transparent;
+  color: #fff;
+  text-decoration: none;
+  transition: all ease-in 0.1s;
+}
+
+.dropDown {
+  position: relative;
+  display: none;
+  z-index: 99;
+}
+
+.dropButton {
+  padding: 4px 10px;
+  background-color: rgba(181,148,37, .2);
+}
+
+.dot {
+  display: block;
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.dot + .dot {
+  margin-top: 2px;
+}
+
+
+.dropMenu {
+  position: absolute;
+  padding: 10px 15px;
+  bottom: 0;
+  right: 0;
+  transform: translateY(100%);
+  background-color: var(--accent-bg-color);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
+  z-index: 99;
+}
+.button + .button {
+  margin-left: 12px;
+}
+
+.button {
+  color: var(--dark-font-color);
+  text-decoration: none;
+  transition: color ease .1s;
+  cursor: pointer;
+}
+.button:hover {
+  color: #fff;
+}
+
+.linkWrap .active,
+.linkWrap:hover .item {
+  background-color: var(--accent-bg-color);
+  color: var(--dark-font-color);
+}
+
+.active + .dropDown,
+.linkWrap:hover .dropDown {
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  display: inline-block;
+  cursor: pointer;
+  z-index: 99;
+}

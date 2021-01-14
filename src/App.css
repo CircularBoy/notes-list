@@ -24,3 +24,27 @@
   padding: var(--element-padding);
   flex-grow: 1
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.input,
+.textarea {
+  display: inline-block;
+  padding: 4px 6px;
+  text-decoration: none;
+  border: 1px solid var(--dark-font-color);
+  margin-bottom: 20px;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+}
