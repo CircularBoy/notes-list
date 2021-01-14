@@ -21,8 +21,8 @@
 }
 
 .content {
-  padding: var(--element-padding);
-  flex-grow: 1
+  padding: 50px 30px;
+  flex-grow: 1;
 }
 
 .form {
@@ -30,7 +30,6 @@
   flex-direction: column;
   max-width: 500px;
   width: 90%;
-  margin: 0 auto;
 }
 
 .input,
