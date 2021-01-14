@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Field, Form, Formik} from "formik";
 import Button from '../../ui-kit/buttons/Button';
 import Input from "../../ui-kit/form/input/Input";
@@ -22,10 +22,17 @@ type FormType = {
 
 const CreateNoteForm: React.FC<FormType> = (props) => {
   let history = useHistory();
+
+  const [redirect, setRedirect] = useState<boolean | string>(false)
   const addNote = (values:NoteWithoutIdType) => {
     props.onCreateNote(values)
-    history.push('/note/'+ props.noteId)
+    setRedirect('/note/'+ props.noteId)
   }
+  useEffect(() => {
+    if(redirect) {
+      history.push('/note/'+ props.noteId)
+    }
+  },[redirect])
 
   return (
     <Formik initialValues={props.initialValues} onSubmit={addNote}>
